@@ -202,7 +202,7 @@ export function Contact() {
                         <button
                           type="submit"
                           disabled={status === "loading"}
-                          className="btn-pill btn-dark focus-ring"
+                          className="btn-pill btn-accent focus-ring"
                         >
                           {status === "loading" ? (
                             <>

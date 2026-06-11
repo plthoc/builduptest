@@ -118,6 +118,16 @@ body {
     border: 1px solid currentColor;
     opacity: 0.85;
   }
+
+  /* Accent blue button (Discord blurple) */
+  .btn-accent {
+    background: #5865F2;
+    color: #ffffff;
+    border: 1px solid #4752C4;
+  }
+  .btn-accent:hover {
+    background: #4752C4;
+  }
   .btn-ghost:hover {
     opacity: 1;
   }

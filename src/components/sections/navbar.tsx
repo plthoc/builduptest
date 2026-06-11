@@ -17,8 +17,8 @@ export function Navbar() {
 
   return (
     <>
-      {/* Full-width navbar - solid dark background */}
-      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-3 bg-[#0a0a0a] border-b border-white/5">
+      {/* Full-width navbar - blue background */}
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 flex items-center justify-between px-6 py-3 bg-[#5865F2] border-b border-[#3f51d6]/40">
         {/* Logo — left */}
         <motion.a
           href="#top"
@@ -42,7 +42,7 @@ export function Navbar() {
             <li key={item.href}>
               <a
                 href={item.href}
-                className="rounded-lg px-3 py-1.5 text-xs font-medium text-white/60 transition-colors hover:text-white focus-ring"
+                className="rounded-lg px-3 py-1.5 text-xs font-medium text-white/90 transition-colors hover:text-white focus-ring"
               >
                 {item.label}
               </a>
@@ -126,7 +126,7 @@ export function Navbar() {
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="fixed right-4 top-4 z-40 grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-white/20 bg-[#111111] text-white transition-all focus-ring md:hidden"
+          className="fixed right-4 top-4 z-40 grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-white/20 bg-[#5865F2] text-white transition-all focus-ring md:hidden"
           aria-label="Open menu"
         >
           <Plus className="h-4 w-4" />

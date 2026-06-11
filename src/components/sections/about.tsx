@@ -23,9 +23,16 @@ export function About() {
           {/* Left — image card (16:10, matches reference proportions) */}
           <Reveal className="lg:col-span-7">
             <div className="relative aspect-[16/10] overflow-hidden rounded-4xl bg-ink-900">
+              {/*
+                To use the image you uploaded in the chat, save the file to:
+                public/images/custom-about.png
+
+                Then this will load it from the public folder. If you prefer a
+                different filename/place, update the path below accordingly.
+              */}
               <Image
-                src="https://imgs.search.brave.com/eMeST4eN6gFvOaeebe1fDdI4epn9aTCIhZFVP6ZJ_1M/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z2FtZXNwb3QuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy9vcmln/aW5hbC8xODYxLzE4/NjE2OTc1LzQ2MDEx/NjUtYmVzdC1yb2Js/b3gtZ2FtZXMtcml2/YWxzLmpwZw"
-                alt="Roblox Rivals gameplay"
+                src="/images/IMG_0136.png"
+                alt="BuildUp"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 58vw"

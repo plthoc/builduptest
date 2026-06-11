@@ -134,17 +134,17 @@ function MemberCard({
         {links?.length ? (
           <div className="flex flex-shrink-0 items-start gap-3 pt-1">
             {links.map((link) =>
-              link.type === "discord" ? (
-                <button
-                  key={link.type}
-                  type="button"
-                  onClick={() => setDiscordOpen(true)}
-                  aria-label={`Open Discord for ${discordUsername ?? name}`}
-                  className="inline-flex items-center justify-center text-ink-700 transition-colors hover:text-ink-900"
-                >
-                  <TeamIcon type="discord" />
-                </button>
-              ) : (
+                  link.type === "discord" ? (
+                    <button
+                      key={link.type}
+                      type="button"
+                      onClick={() => setDiscordOpen(true)}
+                      aria-label={`Open Discord for ${discordUsername ?? name}`}
+                      className="inline-flex items-center justify-center text-[#5865F2] transition-colors hover:brightness-90"
+                    >
+                      <TeamIcon type="discord" />
+                    </button>
+                  ) : (
                 <a
                   key={link.type}
                   href={link.href}
@@ -226,100 +226,34 @@ function DiscordPopover({
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
 
-  const widgetUrl = DISCORD_SERVER_ID
-    ? `https://discord.com/widget?id=${DISCORD_SERVER_ID}&theme=dark`
-    : null;
-
+  // Small centered modal showing the Discord username.
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.2 }}
+      transition={{ duration: 0.18 }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
       onClick={onClose}
     >
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-black/40" />
       <motion.div
-        initial={{ scale: 0.96, y: 8, opacity: 0 }}
+        initial={{ scale: 0.98, y: 6, opacity: 0 }}
         animate={{ scale: 1, y: 0, opacity: 1 }}
-        exit={{ scale: 0.96, y: 8, opacity: 0 }}
-        transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full max-w-md overflow-hidden rounded-3xl border border-white/10 bg-[#1a1a1c] text-white shadow-2xl"
+        exit={{ scale: 0.98, y: 6, opacity: 0 }}
+        transition={{ duration: 0.22 }}
+        className="relative w-full max-w-sm rounded-2xl border border-white/10 bg-white p-6 text-ink-900 shadow-lg"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between border-b border-white/5 px-5 py-4">
-          <div className="flex items-center gap-3">
-            <div className="grid h-10 w-10 place-items-center rounded-full bg-[#5865F2]/15 text-[#5865F2]">
-              <TeamIcon type="discord" sizeClass="h-5 w-5" />
-            </div>
-            <div>
-              <div className="text-sm font-semibold">{displayName}</div>
-              <div className="text-xs text-white/50">
-                {username ? `@${username}` : "Discord member"}
-              </div>
-            </div>
+        <div className="flex flex-col items-center text-center gap-3">
+          <div className="h-12 w-12 rounded-full bg-[#5865F2]/10 grid place-items-center text-[#5865F2]">
+            <TeamIcon type="discord" sizeClass="h-6 w-6" />
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close"
-            className="grid h-8 w-8 place-items-center rounded-full text-white/60 transition-colors hover:bg-white/5 hover:text-white"
-          >
-            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <path d="M6 6l12 12M18 6L6 18" />
-            </svg>
-          </button>
-        </div>
-
-        {/* Body */}
-        <div className="p-5">
-          {widgetUrl ? (
-            <iframe
-              title={`Discord widget for ${displayName}`}
-              src={widgetUrl}
-              className="h-80 w-full rounded-2xl border-0"
-            />
-          ) : (
-            <div className="space-y-3 text-sm text-white/70">
-              <p>
-                The Discord widget isn&apos;t configured yet. To enable the live
-                member list popup:
-              </p>
-              <ol className="list-decimal space-y-1 pl-5 text-white/60">
-                <li>Server Settings → Widget → Enable Widget</li>
-                <li>
-                  Copy the Server ID and add it to your env as{" "}
-                  <code className="rounded bg-white/5 px-1 py-0.5 text-xs">
-                    NEXT_PUBLIC_DISCORD_SERVER_ID
-                  </code>
-                </li>
-              </ol>
-              <a
-                href={DISCORD_INVITE}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[#5865F2] px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-[#4752C4]"
-              >
-                Open Discord invite
-              </a>
-            </div>
-          )}
-        </div>
-
-        {widgetUrl && (
-          <div className="border-t border-white/5 px-5 py-3">
-            <a
-              href={DISCORD_INVITE}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-[#5865F2] px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-[#4752C4]"
-            >
-              Open Discord
-            </a>
+          <div>
+            <div className="text-sm font-semibold">{displayName}</div>
+            <div className="mt-1 text-xs text-ink-500">{username ? `@${username}` : "Discord member"}</div>
           </div>
-        )}
+        </div>
       </motion.div>
     </motion.div>
   );
